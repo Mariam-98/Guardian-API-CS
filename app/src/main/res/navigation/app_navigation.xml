@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/guardianMainPageFragment">
+
+    <fragment
+        android:id="@+id/guardianMainPageFragment"
+        android:name="com.example.weatherapics.GuardianFragment"
+        android:label="fragment_weather_main_page"
+        tools:layout="@layout/fragment_guardian" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/guardianDetailsFragment"
+        android:name="com.example.weatherapics.GuardianDetailsFragment"
+        android:label="fragment_weather_details"
+        tools:layout="@layout/fragment_guardian_details">
+
+        <argument
+            android:name="searchResult"
+            app:argType="com.example.weatherapics.data.SearchResultDto" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_to_guardianDetailsFragment"
+        app:destination="@id/guardianDetailsFragment" />
+
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.example.weatherapics.WebViewFragment"
+        android:label="fragment_weather_web_view"
+        tools:layout="@layout/fragment_web_view">
+
+        <argument
+            android:name="searchResult"
+            app:argType="com.example.weatherapics.data.SearchResultDto" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_to_webViewFragment"
+        app:destination="@id/webViewFragment" />
+
+    <dialog
+        android:id="@+id/orderByBottomSheetDialog"
+        android:name="com.example.weatherapics.ui.guardian.filter.orderby.OrderByBottomSheetDialogFragment"/>
+
+    <action
+        android:id="@+id/action_to_orderByBottomSheetDialog"
+        app:destination="@id/orderByBottomSheetDialog" />
+
+
+    <dialog
+        android:id="@+id/showElementsBottomSheetDialog"
+        android:name="com.example.weatherapics.ui.guardian.filter.showelements.ShowElementsBottomSheetDialogFragment"/>
+
+    <action
+        android:id="@+id/action_to_showElementsBottomSheetDialog"
+        app:destination="@id/showElementsBottomSheetDialog" />
+
+</navigation>
