@@ -5,19 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.RecyclerView
 import com.example.weatherapics.R
 import com.example.weatherapics.SimpleItemAdapter
 import com.example.weatherapics.ui.base.BaseSimpleBottomSheetDialogFragment.Companion.ITEM
+import com.example.weatherapics.ui.viewModels.GuardianViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 abstract class BaseSimpleBottomSheetDialogFragment : BottomSheetDialogFragment() {
 
+    private val guardianViewModel by lazy {
+        GuardianViewModel()
+    }
+
     abstract val items: List<String>
+    abstract fun setFilter(guardianViewModel: GuardianViewModel, filter: String)
 
     private val adapter = SimpleItemAdapter {
-        setFragmentResult(this.javaClass.simpleName, Bundle().apply { putString(ITEM, it) })
+        setFilter(guardianViewModel, it)
+        dismiss()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

@@ -16,9 +16,9 @@ interface GuardianApi {
 
     @GET("search?")
     fun search(
-        @Query("order-by") orderBy: String,
         @Query("q") q: String,
         @Query("api-key") apiKey: String,
+        @Query("show-fields") showFields: String,
         @QueryMap map: Map<String,String>
     ): retrofit2.Call<SearchDto>
 }

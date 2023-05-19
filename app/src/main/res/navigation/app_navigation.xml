@@ -9,9 +9,7 @@
         android:id="@+id/guardianMainPageFragment"
         android:name="com.example.weatherapics.GuardianFragment"
         android:label="fragment_weather_main_page"
-        tools:layout="@layout/fragment_guardian" >
-
-    </fragment>
+        tools:layout="@layout/fragment_guardian" />
 
     <fragment
         android:id="@+id/guardianDetailsFragment"

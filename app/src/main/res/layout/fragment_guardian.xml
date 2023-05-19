@@ -6,35 +6,49 @@
     android:layout_height="match_parent"
     tools:context=".GuardianFragment">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/guardianSearchView"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/shape_rounded_stroke"
-        app:iconifiedByDefault="false"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
-        app:queryBackground="@android:color/transparent"
-        app:queryHint="Search" />
+        app:title="@string/guardian_api">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                app:iconifiedByDefault="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryHint="Search" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/guardianFilterRecyclerView"
+        android:id="@+id/filterRecyclerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/_8dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guardianSearchView" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/guardianResultRecyclerView"
+        android:id="@+id/resultRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/_8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guardianFilterRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@id/filterRecyclerView" />
 
+    <TextView
+        android:id="@+id/simpleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

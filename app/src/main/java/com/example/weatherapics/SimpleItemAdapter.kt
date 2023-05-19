@@ -12,8 +12,8 @@ class SimpleItemAdapter(val itemClick: (String) -> Unit) : RecyclerView.Adapter<
 
     private var items = mutableListOf<String>()
 
-    private lateinit var context : Context
-    private lateinit var inflater : LayoutInflater
+    private lateinit var context: Context
+    private lateinit var inflater: LayoutInflater
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -21,7 +21,7 @@ class SimpleItemAdapter(val itemClick: (String) -> Unit) : RecyclerView.Adapter<
         inflater = LayoutInflater.from(context)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)=DefaultViewHolder(inflater.inflate(R.layout.item_simple, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = DefaultViewHolder(inflater.inflate(R.layout.item_bottom_sheet_dialog, parent, false))
     override fun getItemCount(): Int = items.size
     override fun onBindViewHolder(holder: DefaultViewHolder, position: Int) = holder.bind(items[position])
 

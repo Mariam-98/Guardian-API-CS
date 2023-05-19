@@ -19,10 +19,10 @@ import java.util.Locale
 class GuardianResultAdapter(val itemClick: (SearchResultDto) -> Unit) : RecyclerView.Adapter<GuardianResultAdapter.WeatherViewHolder>() {
 
     private lateinit var context: Context
-    private var resultList = mutableListOf<SearchResultDto?>()
+    private var resultList = mutableListOf<SearchResultDto>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setWeatherList(resultList: List<SearchResultDto?>) {
+    fun setResultList(resultList: List<SearchResultDto>) {
         this.resultList.clear()
         this.resultList.addAll(resultList)
         notifyDataSetChanged()
@@ -32,7 +32,6 @@ class GuardianResultAdapter(val itemClick: (SearchResultDto) -> Unit) : Recycler
         super.onAttachedToRecyclerView(recyclerView)
         context = recyclerView.context
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
         return WeatherViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_guardian_recycler, parent, false))
@@ -56,7 +55,6 @@ class GuardianResultAdapter(val itemClick: (SearchResultDto) -> Unit) : Recycler
         private val webPublicationDateTextView: TextView = itemView.findViewById(R.id.webPublicationDateTextView)
 
         fun bind(result: SearchResultDto?) {
-
             Glide.with(context).load(result?.fields?.thumbnail).centerCrop().into(weatherImageView)
             sectionNameTextView.text = result?.sectionName
             bodyTextView.text = result?.fields?.body?.let { HtmlCompat.fromHtml(it, FROM_HTML_MODE_LEGACY) }
